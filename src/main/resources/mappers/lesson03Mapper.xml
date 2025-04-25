@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.quiz.lesson03.mapper.Lesson03Mapper">
+	<select id="selectRealEstateById"
+		parameterType="int"
+		resultType="com.quiz.lesson03.domain.Real_Estate">
+		SELECT
+			`id`,
+			`realtorId`,
+			`address`,
+			`area`,
+			`type`,
+			`price`,
+			`rentPrice`,
+			`createdAt`,
+			`updatedAt`
+		FROM
+		 `real_estate`	
+		 WHERE
+		 	`id` = #{id}
+	</select>
+	
+	<select id="selectRealEstateByRentPrice"
+		parameterType="int"
+		resultType="com.quiz.lesson03.domain.Real_Estate">
+		SELECT
+			`id`,
+			`realtorId`,
+			`address`,
+			`area`,
+			`type`,
+			`price`,
+			`rentPrice`,
+			`createdAt`,
+			`updatedAt`
+		FROM
+		 `real_estate`	
+		 WHERE
+		 	`rentPrice` &lt; #{rentPrice}
+	</select>
+	
+	<select id="selectRealEstateByComplex"
+		parameterType="map"
+		resultType="com.quiz.lesson03.domain.Real_Estate">
+		SELECT
+			`id`,
+			`realtorId`,
+			`address`,
+			`area`,
+			`type`,
+			`price`,
+			`rentPrice`,
+			`createdAt`,
+			`updatedAt`
+		FROM
+		 `real_estate`	
+		 WHERE
+		 	`price` &lt; #{price}
+		 AND
+		 	 `area` &gt; #{area}
+	</select>
+	<insert id="insertRealEstate"
+		parameterType="com.quiz.lesson03.domain.Real_Estate"
+	>
+	INSERT INTO `real_estate`
+	(
+		`id`,
+		`realtorId`,
+		`address`,
+		`area`,
+		`type`,
+		`price`,
+		`rentPrice`,
+		`createdAt`,
+		`updatedAt`
+	)
+	VALUES
+	(
+		#{id},
+		#{realtorId},
+		#{address},
+		#{area},
+		#{type},
+		#{price},
+		#{rentPrice},
+		NOW(),
+		NOW()
+	
+	
+	)
+	
+	
+	</insert>
+	
+	<insert id="insertRealEstateByField"
+		parameterType="map"
+		useGeneratedKeys="true"
+        keyProperty="id"
+	>
+	INSERT INTO `real_estate`
+	(
+		`id`,
+		`realtorId`,
+		`address`,
+		`area`,
+		`type`,
+		`price`,
+		`rentPrice`,
+		`createdAt`,
+		`updatedAt`
+	)
+	VALUES
+	(
+		
+		#{id},
+		#{realtorId},
+		#{address},
+		#{area},
+		#{type},
+		#{price},
+		#{rentPrice},
+		NOW(),
+		NOW()
+	
+	
+	)
+	
+	
+	</insert>
+	
+
+</mapper>
