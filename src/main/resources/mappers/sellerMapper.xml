@@ -9,20 +9,47 @@
 		(`nickname`,
 		`profileUrl`,
 		`temperature`,
-		createdAt,
-		updatedAt)
+		`createdAt`,
+		`updatedAt`)
 			
 		VALUES
 		(
 		 #{nickname},
 		#{profileUrl},
 		#{temperature},
+		NOW(),
 		NOW()
-		NOW()
-		
 		)
 		
 	
 	</insert>
+	
+	<select id="selectLatestSeller" resultType="com.quiz.lesson04.domain.Seller">
+		SELECT
+			`nickname`,
+			`profileUrl`,
+			`temperature`,
+			`createdAt`,
+			`updatedAt`
+		FROM
+			`new_seller`
+		ORDER BY `id` DESC
+		LIMIT 1
+	</select>
+	
+	<select id="selectSellerById" 
+	parameterType="int"
+	resultType="com.quiz.lesson04.domain.Seller">
+		SELECT
+			`nickname`,
+			`profileUrl`,
+			`temperature`,
+			`createdAt`,
+			`updatedAt`
+		FROM
+			`new_seller`
+		WHERE
+		 `id` = #{id}
+		 </select>
 
 </mapper>
