@@ -44,5 +44,10 @@ public class Lesson03QuizBO {
 	{
 		return(lesson03Mapper.insertRealEstateByField(id,realtorId,address,area,type,price,rentPrice));
 	}
+	public void deleteRealEstateByIdService(int id) {
+		lesson03Mapper.deleteRealEstateById(id);
+	}
 
 }
+
+

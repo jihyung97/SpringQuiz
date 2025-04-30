@@ -22,4 +22,9 @@ public interface Lesson03Mapper {
 										@Param("price") int price,
 										@Param("rentPrice") int rentPrice
 								       );
+	public void deleteRealEstateById (
+				int id
+			);
+	
+	
 }
