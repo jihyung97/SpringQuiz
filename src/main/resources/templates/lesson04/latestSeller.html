@@ -10,24 +10,17 @@
 </head>
 <body>
 	<div class="container">
-		<h1>판매자 추가</h1>
-		<form method="post" action="/lesson04/quiz01/add-Seller">
-			<div class="form-group">
-				<label for "nickname">닉네임</label>
-				<input type="text" id="nickname" name="nickname" class="form-control col-4">	
-			</div>
-				<div class="form-group">
-				<label for "profileUrl">사진url</label>
-				<input type="text" id="profileUrl" name="profileUrl" class="form-control col-4">	
-			</div>
-				</div>
-				<div class="form-group">
-				<label for "temperature">온도</label>
-				<input type="text" id="temperaturel" name="temperature" class="form-control col-4">	
-				
-			</div>
-			<input type="submit" value="추가" class="btn btn-info">
-		</form>
+		<h1>판매자 정보</h1>
+		<div>
+			<h1 th:text="${result.nickname}"> 판매자 이름 </h1>
+		</div>
+		<div>
+			<img src="https://item.kakaocdn.net/do/d9ede575178c59ac8f99a073aa704d99effd194bae87d73dd00522794070855d" width="100" height="100">
+		</div>
+		
+		<div>
+			<h1 th:text="${result.temperature}" class="text-warning "> 판매자 온도 </h1>
+		</div>
 	</div>
 	
 </body>

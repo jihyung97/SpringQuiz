@@ -10,25 +10,33 @@
 </head>
 <body>
 	<div class="container">
-		<h1>판매자 추가</h1>
-		<form method="post" action="/lesson04/quiz01/add-Seller">
-			<div class="form-group">
-				<label for "nickname">닉네임</label>
-				<input type="text" id="nickname" name="nickname" class="form-control col-4">	
-			</div>
-				<div class="form-group">
-				<label for "profileUrl">사진url</label>
-				<input type="text" id="profileUrl" name="profileUrl" class="form-control col-4">	
-			</div>
-				</div>
-				<div class="form-group">
-				<label for "temperature">온도</label>
-				<input type="text" id="temperaturel" name="temperature" class="form-control col-4">	
-				
-			</div>
-			<input type="submit" value="추가" class="btn btn-info">
-		</form>
+		<table class="table">
+			<tr>
+				<th>ID</th>
+				<td th:text="${new_realtor.id}"></td>
+			</tr>
+			<tr>
+				<th>상호명</th>
+				<td th:text="${new_realtor.office}"></td>
+			</tr>
+			<tr>
+				<th>휴대폰 번호</th>
+				<td th:text="${new_realtor.phoneNumber}"></td>
+			</tr>
+			<tr>
+				<th>이메일</th>
+				<td th:text="${new_realtor.address}"></td>
+			</tr>
+			<tr>
+				<th>장래희망</th>
+				<td th:text="${new_realtor.grade}"></td>
+			</tr>
+		
+			
+		</table>
+	
 	</div>
 	
+
 </body>
 </html>
