@@ -22,6 +22,11 @@ public class Lesson04Quiz02Controller {
 		return "lesson04/addRealtor";
 	}
 	
+	@RequestMapping("/add-realtor-view2")
+	public String addRealtorView2() {
+		return "lesson04/addRealtor";
+	}
+	
 	@PostMapping("/add-realtor")
 	public String addRealtor(
 			@ModelAttribute Realtor realtor,
