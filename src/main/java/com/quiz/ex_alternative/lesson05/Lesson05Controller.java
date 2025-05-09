@@ -2,7 +2,11 @@ package com.quiz.ex_alternative.lesson05;
 
 
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.stereotype.Controller;
@@ -23,6 +27,20 @@ public class Lesson05Controller {
 	public String ex02() {
 		return "lesson05/ex02";
 	}
+	
+	
+	@RequestMapping("/ex03")
+	public String ex03(Model model) {
+		Date date = new Date();
+		model.addAttribute("date",date);
+		LocalDateTime localDateTime = LocalDateTime.now();
+		model.addAttribute("localDateTime",localDateTime);
+		model.addAttribute("localDate",LocalDate.now());
+		model.addAttribute("ZonedDateTime",ZonedDateTime.now());
+		
+		return "lesson05/ex03";
+	}
+	
 	
 	@RequestMapping("/quiz02")
 	public String quiz02(
