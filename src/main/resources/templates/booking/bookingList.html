@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+ <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+</head>
+
+<body>
+	<div class="container">
+		<header>
+			<h1>통나무 펜션</h1>
+		</header>
+		<nav>
+			<ul class="nav nav-fill font-weight-bold">
+				<li class="nav-item"><a href="#" class="nav-link">펜션소개</a></li>
+				<li class="nav-item"><a href="#" class="nav-link">객실소개</a></li>
+				<li class="nav-item"><a href="#" class="nav-link">예약안내</a></li>
+				<li class="nav-item"><a href="#" class="nav-link">커뮤니티</a></li>
+			</ul>
+		
+		</nav>
+		<section>
+			<div><h2>예약 목록 보기</h2></div>
+			<div>
+				<table class="table">
+					<thead>
+						<tr>
+							<th>이름</th>
+							<th>예약날짜</th>
+							<th>숙박일수</th>
+							<th>숙박인원</th>
+							<th>전화번호</th>
+							<th>예약상태</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each ="book, status:${bookList}">
+							<td><span th:text="${book.name}"></span></td>
+							<td><span th:text="${book.date}"></span></td>
+							<td><span th:text="${book.day}"></td>
+							<td><span th:text="${book.people}"></td>
+							<td><span th:text="${book.phoneNumber}"></td>
+							<td><span th:text="${book.status}"></td>
+							<td> <button type="button" th:data-book-id="${book.id}" class="del-btn btn btn-danger">삭제</button></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		
+		</section>
+	</div>
+	
+	<script>
+		$(function(){
+			$(".del-btn").on("click", function(e){
+				let id = $(this).data("book-id");
+				
+				$.ajax({
+					// request
+					type:"delete"
+					, url:"/lesson06/delete-book"
+					, data:{"id":id}
+					
+					// response
+					, success:function(data) {
+						if (data.result == "성공") {
+							location.reload(true); // 새로고침, 스크롤 유지
+						} else {
+							// {"code":500, "error_message":"에러원인"}
+							alert(data.error_message);
+						}
+					}
+					, error:function(error) {
+						alert("삭제하는데 실패했습니다.");
+					}
+				});
+			});
+			
+		});
+	
+	</script>
+</body>
+</html>
