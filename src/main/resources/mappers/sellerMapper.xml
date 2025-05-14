@@ -4,25 +4,7 @@
 
 
 <mapper namespace="com.quiz.lesson04.mapper.SellerMapper">
-	<insert id="insertSeller" parameterType="map">
-		INSERT INTO `new_seller`
-		(`nickname`,
-		`profileUrl`,
-		`temperature`,
-		`createdAt`,
-		`updatedAt`)
-			
-		VALUES
-		(
-		 #{nickname},
-		#{profileUrl},
-		#{temperature},
-		NOW(),
-		NOW()
-		)
-		
 	
-	</insert>
 	
 	<select id="selectLatestSeller" resultType="com.quiz.lesson04.domain.Seller">
 		SELECT
@@ -49,7 +31,6 @@
 		FROM
 			`new_seller`
 		WHERE
-		 `id` = #{id}
 		 </select>
 
 </mapper>
